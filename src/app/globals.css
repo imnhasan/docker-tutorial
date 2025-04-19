@@ -1,0 +1,49 @@
+/* Force light theme syntax highlighting */
+@import 'highlight.js/styles/github.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme colors (forced) */
+  --background: #ffffff;
+  --foreground: #171717;
+  --code-bg: #f6f8fa; /* GitHub light code background */
+}
+
+/* Remove dark mode media query entirely */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans); /* Use your Geist font */
+}
+
+/* Syntax highlighting overrides for light theme */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  background: var(--code-bg) !important; /* Force light background */
+  border-radius: 0.5rem;
+  font-family: var(--font-geist-mono); /* Use Geist Mono for code */
+}
+
+.hljs {
+  background: var(--code-bg) !important;
+  color: var(--foreground) !important;
+}
