@@ -1,49 +1,224 @@
-/* Force light theme syntax highlighting */
-@import 'highlight.js/styles/github.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import 'highlight.js/styles/atom-one-dark.css';
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root,
+html.dark,
+[data-theme="dark"] {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
 
-:root {
-  /* Light theme colors (forced) */
-  --background: #ffffff;
-  --foreground: #171717;
-  --code-bg: #f6f8fa; /* GitHub light code background */
+  --bg-app: #0b0f19;
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --bg-card-hover: rgba(30, 41, 59, 0.7);
+  --bg-card-solid: #0f172a;
+  --bg-header: rgba(11, 15, 25, 0.85);
+  --bg-sidebar: rgba(15, 23, 42, 0.95);
+  --bg-elevated: #090d16;
+  --bg-input: #0f172a;
+  --bg-button: #1e293b;
+  --bg-button-hover: #334155;
+  --border-subtle: rgba(51, 65, 85, 0.7);
+  --border-card: #1e293b;
+  --border-card-hover: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-color: #38bdf8;
+  --accent-bg: rgba(56, 189, 248, 0.12);
+  --accent-border: rgba(56, 189, 248, 0.3);
+  --code-bg: #0d1117;
+  --code-header: rgba(15, 23, 42, 0.9);
+  --callout-tip-bg: rgba(6, 78, 59, 0.2);
+  --callout-tip-border: rgba(16, 185, 129, 0.3);
+  --callout-tip-text: #a7f3d0;
+  --callout-note-bg: rgba(12, 74, 110, 0.2);
+  --callout-note-border: rgba(14, 165, 233, 0.3);
+  --callout-note-text: #bae6fd;
+  --selection-bg: #0284c7;
+  --selection-color: #ffffff;
+  --scrollbar-thumb: #334155;
+  --scrollbar-track: #0b0f19;
 }
 
-/* Remove dark mode media query entirely */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+/* Sepia Mode - Warm parchment reading experience */
+html.sepia,
+[data-theme="sepia"] {
+  --bg-app: #f4ebd9;
+  --bg-card: #fbf5e8;
+  --bg-card-hover: #fcf8ee;
+  --bg-card-solid: #fcf6eb;
+  --bg-header: rgba(244, 235, 217, 0.92);
+  --bg-sidebar: rgba(248, 241, 228, 0.97);
+  --bg-elevated: #ece0ca;
+  --bg-input: #fcf7ed;
+  --bg-button: #e8dcc4;
+  --bg-button-hover: #decfae;
+  --border-subtle: #e2d4bc;
+  --border-card: #e2d4bc;
+  --border-card-hover: #d2c0a3;
+  --text-primary: #34281b;
+  --text-secondary: #655442;
+  --text-muted: #8a7762;
+  --accent-color: #b45309;
+  --accent-bg: rgba(180, 83, 9, 0.1);
+  --accent-border: rgba(180, 83, 9, 0.28);
+  --code-bg: #272018;
+  --code-header: #1f1811;
+  --callout-tip-bg: #eef6e6;
+  --callout-tip-border: #bcd9a4;
+  --callout-tip-text: #2f4d17;
+  --callout-note-bg: #fdf5e6;
+  --callout-note-border: #ebd1a4;
+  --callout-note-text: #5e4012;
+  --selection-bg: #d97706;
+  --selection-color: #ffffff;
+  --scrollbar-thumb: #cbb99e;
+  --scrollbar-track: #f4ebd9;
+}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Light Mode - Crisp paper */
+html.light,
+[data-theme="light"] {
+  --bg-app: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-card-solid: #ffffff;
+  --bg-header: rgba(255, 255, 255, 0.88);
+  --bg-sidebar: rgba(255, 255, 255, 0.95);
+  --bg-elevated: #f1f5f9;
+  --bg-input: #ffffff;
+  --bg-button: #f1f5f9;
+  --bg-button-hover: #e2e8f0;
+  --border-subtle: #e2e8f0;
+  --border-card: #e2e8f0;
+  --border-card-hover: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent-color: #0284c7;
+  --accent-bg: rgba(2, 132, 199, 0.1);
+  --accent-border: rgba(2, 132, 199, 0.28);
+  --code-bg: #0f172a;
+  --code-header: #1e293b;
+  --callout-tip-bg: #f0fdf4;
+  --callout-tip-border: #bbf7d0;
+  --callout-tip-text: #166534;
+  --callout-note-bg: #f0f9ff;
+  --callout-note-border: #bae6fd;
+  --callout-note-text: #0369a1;
+  --selection-bg: #0284c7;
+  --selection-color: #ffffff;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-track: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans); /* Use your Geist font */
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Syntax highlighting overrides for light theme */
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.2);
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-color);
+}
+
+/* Code block highlight styling */
+pre,
+pre code,
+code.hljs,
+.hljs {
+  white-space: pre !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
 pre code.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 1em;
-  background: var(--code-bg) !important; /* Force light background */
-  border-radius: 0.5rem;
-  font-family: var(--font-geist-mono); /* Use Geist Mono for code */
+  background: transparent !important;
+  padding: 0 !important;
+  font-family: var(--font-mono) !important;
 }
 
 .hljs {
-  background: var(--code-bg) !important;
-  color: var(--foreground) !important;
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+/* Dark mode syntax highlighting */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #38bdf8 !important;
+  font-weight: 600;
+}
+.hljs-string {
+  color: #a7f3d0 !important;
+}
+.hljs-comment {
+  color: #64748b !important;
+  font-style: italic;
+}
+.hljs-number {
+  color: #f59e0b !important;
+}
+.hljs-attr {
+  color: #93c5fd !important;
+}
+.hljs-variable,
+.hljs-template-variable {
+  color: #f472b6 !important;
+}
+.hljs-built_in {
+  color: #38bdf8 !important;
+}
+.hljs-title,
+.hljs-section {
+  color: #fbbf24 !important;
+  font-weight: 600;
+}
+
+/* Sepia syntax highlighting: warm espresso tokens */
+[data-theme="sepia"] .hljs {
+  color: #f0e6d2 !important;
+}
+[data-theme="sepia"] .hljs-keyword,
+[data-theme="sepia"] .hljs-selector-tag {
+  color: #f59e0b !important;
+}
+[data-theme="sepia"] .hljs-string {
+  color: #a3e635 !important;
+}
+[data-theme="sepia"] .hljs-comment {
+  color: #8c7760 !important;
+}
+[data-theme="sepia"] .hljs-number {
+  color: #fb923c !important;
+}
+[data-theme="sepia"] .hljs-built_in {
+  color: #38bdf8 !important;
 }

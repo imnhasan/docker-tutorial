@@ -1,24 +1,21 @@
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
+import { DockerTutorialReader } from '@/components/DockerTutorialReader';
+
+export const metadata = {
+  title: 'Docker Playbook — 39 Hands-On Modules',
+  description: 'Complete, hands-on Docker masterclass: Dockerfiles, images, containers, volumes, Compose and production.',
+};
 
 export default function HomePage() {
   const readmePath = path.join(process.cwd(), 'src', 'app', 'docker-tutorial.md');
-  const readmeContent = fs.readFileSync(readmePath, 'utf8');
+  let readmeContent = '';
+  try {
+    readmeContent = fs.readFileSync(readmePath, 'utf8');
+  } catch {
+    readmeContent = '';
+  }
 
-  return (
-    <main className="flex justify-center min-h-screen items-start pt-20 bg-white">
-      <article className="prose prose-lg">
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeHighlight]}
-        >
-          {readmeContent}
-        </ReactMarkdown>
-      </article>
-    </main>
-  );
+  return <DockerTutorialReader rawMarkdown={readmeContent} />;
 }
